@@ -47,18 +47,18 @@
 
 			?>
 
-			<h1 class="text-center">Manage Members</h1>
+			<h1 class="text-center">تعديل الأعضاء</h1>
 			<div class="container">
 				<div class="table-responsive">
 					<table class="main-table manage-members text-center table table-bordered">
 						<tr>
 							<td>#ID</td>
-							<td>Avatar</td>
-							<td>Username</td>
-							<td>Email</td>
-							<td>Full Name</td>
-							<td>Registered Date</td>
-							<td>Control</td>
+							<td>الصورة</td>
+							<td>أسم المستخدم</td>
+							<td>البريد الألكتروني</td>
+							<td>الأسم بالكامل</td>
+							<td>تاريخ التسجيل</td>
+							<td>التحكم</td>
 						</tr>
 						<?php
 							foreach($rows as $row) {
@@ -77,13 +77,13 @@
 									echo "<td>" . $row['FullName'] . "</td>";
 									echo "<td>" . $row['Date'] ."</td>";
 									echo "<td>
-										<a href='members.php?do=Edit&userid=" . $row['UserID'] . "' class='btn btn-success'><i class='fa fa-edit'></i> Edit</a>
-										<a href='members.php?do=Delete&userid=" . $row['UserID'] . "' class='btn btn-danger confirm'><i class='fa fa-close'></i> Delete </a>";
+										<a href='members.php?do=Edit&userid=" . $row['UserID'] . "' class='btn btn-success'><i class='fa fa-edit'></i> تعديل</a>
+										<a href='members.php?do=Delete&userid=" . $row['UserID'] . "' class='btn btn-danger confirm'><i class='fa fa-close'></i> حذف </a>";
 										if ($row['RegStatus'] == 0) {
 											echo "<a 
 													href='members.php?do=Activate&userid=" . $row['UserID'] . "' 
 													class='btn btn-info activate'>
-													<i class='fa fa-check'></i> Activate</a>";
+													<i class='fa fa-check'></i> تفعيل</a>";
 										}
 									echo "</td>";
 								echo "</tr>";
@@ -93,7 +93,7 @@
 					</table>
 				</div>
 				<a href="members.php?do=Add" class="btn btn-primary">
-					<i class="fa fa-plus"></i> New Member
+					<i class="fa fa-plus"></i> أضافة عضو
 				</a>
 			</div>
 
@@ -102,7 +102,7 @@
 				echo '<div class="container">';
 					echo '<div class="nice-message">There\'s No Members To Show</div>';
 					echo '<a href="members.php?do=Add" class="btn btn-primary">
-							<i class="fa fa-plus"></i> New Member
+							<i class="fa fa-plus"></i> عضو جديد
 						</a>';
 				echo '</div>';
 
@@ -112,44 +112,44 @@
 
 		} elseif ($do == 'Add') { // Add Page ?>
 
-			<h1 class="text-center">Add New Member</h1>
+			<h1 class="text-center">أضافة عضو جديد</h1>
 			<div class="container">
 				<form class="form-horizontal" action="?do=Insert" method="POST" enctype="multipart/form-data">
 					<!-- Start Username Field -->
-					<div class="form-group form-group-lg">
-						<label class="col-sm-2 control-label">Username</label>
+					<div class="form-group form-group-lg width">
+						<label class="col-sm-2 control-label">أسم المستخدم</label>
 						<div class="col-sm-10 col-md-6">
-							<input type="text" name="username" class="form-control" autocomplete="off" required="required" placeholder="Username To Login Into Shop" />
+							<input type="text" name="username" class="form-control" autocomplete="off" required="required" placeholder="أدخل أسم المستخدم" />
 						</div>
 					</div>
 					<!-- End Username Field -->
 					<!-- Start Password Field -->
-					<div class="form-group form-group-lg">
-						<label class="col-sm-2 control-label">Password</label>
+					<div class="form-group form-group-lg width">
+						<label class="col-sm-2 control-label">كلمة السر</label>
 						<div class="col-sm-10 col-md-6">
-							<input type="password" name="password" class="password form-control" required="required" autocomplete="new-password" placeholder="Password Must Be Hard & Complex" />
+							<input type="password" name="password" class="password form-control" required="required" autocomplete="new-password" placeholder="كلمة سر" />
 							<i class="show-pass fa fa-eye fa-2x"></i>
 						</div>
 					</div>
 					<!-- End Password Field -->
 					<!-- Start Email Field -->
-					<div class="form-group form-group-lg">
-						<label class="col-sm-2 control-label">Email</label>
+					<div class="form-group form-group-lg width">
+						<label class="col-sm-2 control-label">البريد الألكتروني</label>
 						<div class="col-sm-10 col-md-6">
-							<input type="email" name="email" class="form-control" required="required" placeholder="Email Must Be Valid" />
+							<input type="email" name="email" class="form-control" required="required" placeholder="ادخل البريد الألكتروني" />
 						</div>
 					</div>
 					<!-- End Email Field -->
 					<!-- Start Full Name Field -->
-					<div class="form-group form-group-lg">
-						<label class="col-sm-2 control-label">Full Name</label>
+					<div class="form-group form-group-lg width">
+						<label class="col-sm-2 control-label">الأسم بالكامل</label>
 						<div class="col-sm-10 col-md-6">
-							<input type="text" name="full" class="form-control" required="required" placeholder="Full Name Appear In Your Profile Page" />
+							<input type="text" name="full" class="form-control" required="required" placeholder="أدخل الأسم بالكامل" />
 						</div>
 					</div>
 					<!-- End Full Name Field -->
 					<!-- Start Avatar Field -->
-					<div class="form-group form-group-lg">
+					<div class="form-group form-group-lg width">
 						<label class="col-sm-2 control-label">User Avatar</label>
 						<div class="col-sm-10 col-md-6">
 							<input type="file" name="avatar" class="form-control" required="required" />
@@ -157,7 +157,7 @@
 					</div>
 					<!-- End Avatar Field -->
 					<!-- Start Submit Field -->
-					<div class="form-group form-group-lg">
+					<div class="form-group form-group-lg width">
 						<div class="col-sm-offset-2 col-sm-10">
 							<input type="submit" value="Add Member" class="btn btn-primary btn-lg" />
 						</div>
@@ -333,47 +333,47 @@
 
 			if ($count > 0) { ?>
 
-				<h1 class="text-center">Edit Member</h1>
+				<h1 class="text-center">تعديل الأعضاء</h1>
 				<div class="container">
 					<form class="form-horizontal" action="?do=Update" method="POST">
 						<input type="hidden" name="userid" value="<?php echo $userid ?>" />
 						<!-- Start Username Field -->
-						<div class="form-group form-group-lg">
-							<label class="col-sm-2 control-label">Username</label>
+						<div class="form-group form-group-lg width">
 							<div class="col-sm-10 col-md-6">
 								<input type="text" name="username" class="form-control" value="<?php echo $row['Username'] ?>" autocomplete="off" required="required" />
 							</div>
+							<label class="col-sm-2 control-label">أسم المستخدم</label>
 						</div>
 						<!-- End Username Field -->
 						<!-- Start Password Field -->
-						<div class="form-group form-group-lg">
-							<label class="col-sm-2 control-label">Password</label>
+						<div class="form-group form-group-lg width">
 							<div class="col-sm-10 col-md-6">
 								<input type="hidden" name="oldpassword" value="<?php echo $row['Password'] ?>" />
-								<input type="password" name="newpassword" class="form-control" autocomplete="new-password" placeholder="Leave Blank If You Dont Want To Change" />
+								<input type="password" name="newpassword" class="form-control" autocomplete="new-password" placeholder="أدخل كلمة السر" />
 							</div>
+							<label class="col-sm-2 control-label">كلمة السر</label>
 						</div>
 						<!-- End Password Field -->
 						<!-- Start Email Field -->
-						<div class="form-group form-group-lg">
-							<label class="col-sm-2 control-label">Email</label>
+						<div class="form-group form-group-lg width">
 							<div class="col-sm-10 col-md-6">
 								<input type="email" name="email" value="<?php echo $row['Email'] ?>" class="form-control" required="required" />
 							</div>
+							<label class="col-sm-2 control-label">البريد الألكتروني</label>
 						</div>
 						<!-- End Email Field -->
 						<!-- Start Full Name Field -->
-						<div class="form-group form-group-lg">
-							<label class="col-sm-2 control-label">Full Name</label>
+						<div class="form-group form-group-lg width">
 							<div class="col-sm-10 col-md-6">
 								<input type="text" name="full" value="<?php echo $row['FullName'] ?>" class="form-control" required="required" />
 							</div>
+							<label class="col-sm-2 control-label">الأسم بالكامل</label>
 						</div>
 						<!-- End Full Name Field -->
 						<!-- Start Submit Field -->
-						<div class="form-group form-group-lg">
-							<div class="col-sm-offset-2 col-sm-10">
-								<input type="submit" value="Save" class="btn btn-primary btn-lg" />
+						<div class="form-group form-group-lg width">
+							<div class="col-sm-offset-2 col-sm-4">
+								<input type="submit" value="حفظ" class="btn btn-primary btn-sm" />
 							</div>
 						</div>
 						<!-- End Submit Field -->
@@ -388,7 +388,7 @@
 
 				echo "<div class='container'>";
 
-				$theMsg = '<div class="alert alert-danger">Theres No Such ID</div>';
+				$theMsg = '<div class="alert alert-danger">هذا المعرف غير موجود</div>';
 
 				redirectHome($theMsg);
 
@@ -487,7 +487,7 @@
 
 			} else {
 
-				$theMsg = '<div class="alert alert-danger">Sorry You Cant Browse This Page Directly</div>';
+				$theMsg = '<div class="alert alert-danger">لا يمكن الدخول مباشرة</div>';
 
 				redirectHome($theMsg);
 
@@ -497,7 +497,7 @@
 
 		} elseif ($do == 'Delete') { // Delete Member Page
 
-			echo "<h1 class='text-center'>Delete Member</h1>";
+			echo "<h1 class='text-center'>حذف العضو</h1>";
 			echo "<div class='container'>";
 
 				// Check If Get Request userid Is Numeric & Get The Integer Value Of It
@@ -518,13 +518,13 @@
 
 					$stmt->execute();
 
-					$theMsg = "<div class='alert alert-success'>" . $stmt->rowCount() . ' Record Deleted</div>';
+					$theMsg = "<div class='alert alert-success'>" . $stmt->rowCount() . ' تم التسجيل</div>';
 
 					redirectHome($theMsg, 'back');
 
 				} else {
 
-					$theMsg = '<div class="alert alert-danger">This ID is Not Exist</div>';
+					$theMsg = '<div class="alert alert-danger">هذا العنصر غير موجود</div>';
 
 					redirectHome($theMsg);
 
@@ -534,7 +534,7 @@
 
 		} elseif ($do == 'Activate') {
 
-			echo "<h1 class='text-center'>Activate Member</h1>";
+			echo "<h1 class='text-center'>تفعيل الأعضاء</h1>";
 			echo "<div class='container'>";
 
 				// Check If Get Request userid Is Numeric & Get The Integer Value Of It
@@ -553,7 +553,7 @@
 
 					$stmt->execute(array($userid));
 
-					$theMsg = "<div class='alert alert-success'>" . $stmt->rowCount() . ' Record Updated</div>';
+					$theMsg = "<div class='alert alert-success'>" . $stmt->rowCount() . 'تم التسجيل</div>';
 
 					redirectHome($theMsg);
 

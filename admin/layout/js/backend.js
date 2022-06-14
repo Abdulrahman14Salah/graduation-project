@@ -72,7 +72,7 @@ $(function () {
 
 	$('.confirm').click(function () {
 
-		return confirm('Are You Sure?');
+		return confirm('هل أنت متأكد ؟ ');
 
 	});
 

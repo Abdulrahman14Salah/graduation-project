@@ -50,17 +50,17 @@
 
 			?>
 
-			<h1 class="text-center">Manage Items</h1>
+			<h1 class="text-center">أدارة المنتجات</h1>
 			<div class="container">
 				<div class="table-responsive">
 					<table class="main-table text-center table table-bordered">
 						<tr>
 							<td>#ID</td>
-							<td>Item Name</td>
-							<td>Adding Date</td>
-							<td>Category</td>
-							<td>Username</td>
-							<td>Control</td>
+							<td>أسم المنتج</td>
+							<td>تاريخ الأضافة</td>
+							<td>القسم</td>
+							<td>أسم المستخد</td>
+							<td>التحكم</td>
 						</tr>
 						<?php
 							foreach($items as $item) {
@@ -71,13 +71,13 @@
 									echo "<td>" . $item['category_name'] ."</td>";
 									echo "<td>" . $item['Username'] ."</td>";
 									echo "<td>
-										<a href='items.php?do=Edit&itemid=" . $item['Item_ID'] . "' class='btn btn-success'><i class='fa fa-edit'></i> Edit</a>
-										<a href='items.php?do=Delete&itemid=" . $item['Item_ID'] . "' class='btn btn-danger confirm'><i class='fa fa-close'></i> Delete </a>";
+										<a href='items.php?do=Edit&itemid=" . $item['Item_ID'] . "' class='btn btn-success'><i class='fa fa-edit'></i>تعديل</a>
+										<a href='items.php?do=Delete&itemid=" . $item['Item_ID'] . "' class='btn btn-danger confirm'><i class='fa fa-close'></i>حذف</a>";
 										if ($item['Approve'] == 0) {
 											echo "<a 
 													href='items.php?do=Approve&itemid=" . $item['Item_ID'] . "' 
 													class='btn btn-info activate'>
-													<i class='fa fa-check'></i> Approve</a>";
+													<i class='fa fa-check'></i>قبول</a>";
 										}
 									echo "</td>";
 								echo "</tr>";
@@ -87,7 +87,7 @@
 					</table>
 				</div>
 				<a href="items.php?do=Add" class="btn btn-sm btn-primary">
-					<i class="fa fa-plus"></i> New Item
+					<i class="fa fa-plus"></i> منتج جديد
 				</a>
 			</div>
 
@@ -96,7 +96,7 @@
 				echo '<div class="container">';
 					echo '<div class="nice-message">There\'s No Items To Show</div>';
 					echo '<a href="items.php?do=Add" class="btn btn-sm btn-primary">
-							<i class="fa fa-plus"></i> New Item
+							<i class="fa fa-plus"></i> منتج جديد
 						</a>';
 				echo '</div>';
 
@@ -106,12 +106,11 @@
 
 		} elseif ($do == 'Add') { ?>
 
-			<h1 class="text-center">Add New Item</h1>
+			<h1 class="text-center">أضافة عنصر جديد</h1>
 			<div class="container">
 				<form class="form-horizontal" action="?do=Insert" method="POST" enctype="multipart/form-data">
 					<!-- Start Name Field -->
-					<div class="form-group form-group-lg">
-						<label class="col-sm-2 control-label">Name</label>
+					<div class="form-group form-group-lg width">
 						<div class="col-sm-10 col-md-6">
 							<input 
 								type="text" 
@@ -120,11 +119,11 @@
 								required="required"  
 								placeholder="Name of The Item" />
 						</div>
+						<label class="col-sm-1 control-label">الأسم</label>
 					</div>
 					<!-- End Name Field -->
 					<!-- Start Country Field -->
-					<div class="form-group form-group-lg">
-						<label class="col-sm-2 control-label">Country</label>
+					<div class="form-group form-group-lg width">
 						<div class="col-sm-10 col-md-6">
 							<input 
 								type="text" 
@@ -133,11 +132,11 @@
 								required="required" 
 								placeholder="Country of Made" />
 						</div>
+						<label class="col-sm-1 control-label">البلد</label>
 					</div>
 					<!-- End Country Field -->
 					<!-- Start Members Field -->
-					<div class="form-group form-group-lg">
-						<label class="col-sm-2 control-label">Member</label>
+					<div class="form-group form-group-lg width">
 						<div class="col-sm-10 col-md-6">
 							<select name="member">
 								<option value="0">...</option>
@@ -149,11 +148,11 @@
 								?>
 							</select>
 						</div>
+						<label class="col-sm-1 control-label">العضو</label>
 					</div>
 					<!-- End Members Field -->
 					<!-- Start Categories Field -->
-					<div class="form-group form-group-lg">
-						<label class="col-sm-2 control-label">Category</label>
+					<div class="form-group form-group-lg width">
 						<div class="col-sm-10 col-md-6">
 							<select name="category">
 								<option value="0">...</option>
@@ -169,32 +168,33 @@
 								?>
 							</select>
 						</div>
+						<label class="col-sm-1 control-label">القسم</label>
 					</div>
 					<!-- End Categories Field -->
 					<!-- Start Tags Field -->
-					<div class="form-group form-group-lg">
-						<label class="col-sm-2 control-label">Tags</label>
+					<div class="form-group form-group-lg width">
 						<div class="col-sm-10 col-md-6">
 							<input 
 								type="text" 
 								name="tags" 
 								class="form-control" 
-								placeholder="Separate Tags With Comma (,)" />
+								placeholder="(,)أفصل التاج بــ" />
 						</div>
+						<label class="col-sm-1 control-label">تاج</label>
 					</div>
 					<!-- End Tags Field -->
 					<!-- Start Image Field -->
-					<div class="form-group form-group-lg">
-						<label class="col-sm-2 control-label">User Avatar</label>
+					<div class="form-group form-group-lg width">
 						<div class="col-sm-10 col-md-6">
 							<input type="file" name="image" class="form-control" required="required" />
 						</div>
+						<label class="col-sm-1 control-label">أستخدم صورة</label>
 					</div>
 					<!-- End Image Field -->
 					<!-- Start Submit Field -->
-					<div class="form-group form-group-lg">
-						<div class="col-sm-offset-2 col-sm-10">
-							<input type="submit" value="Add Item" class="btn btn-primary btn-sm" />
+					<div class="form-group form-group-lg width">
+						<div class="col-sm-offset-2 col-sm-4">
+							<input type="submit" value="أضافة منتج" class="btn btn-primary btn-sm" />
 						</div>
 					</div>
 					<!-- End Submit Field -->
@@ -230,19 +230,19 @@
 				$formErrors = array();
 
 				if (empty($name)) {
-					$formErrors[] = 'Name Can\'t be <strong>Empty</strong>';
+					$formErrors[] = 'الأسم لا يمكن أن يكون فارغ';
 				}
 
 				if (empty($country)) {
-					$formErrors[] = 'Country Can\'t be <strong>Empty</strong>';
+					$formErrors[] = 'البلد لا يمكن أن يكون فارغ';
 				}
 
 				if ($member == 0) {
-					$formErrors[] = 'You Must Choose the <strong>Member</strong>';
+					$formErrors[] = 'العضو لا يمكن أن يكون فارغ';
 				}
 
 				if ($cat == 0) {
-					$formErrors[] = 'You Must Choose the <strong>Category</strong>';
+					$formErrors[] = 'القسم لا يمكن أن يكون فارغ';
 				}
 
 				// Loop Into Errors Array And Echo It
@@ -281,7 +281,7 @@
 
 					// Echo Success Message
 
-					$theMsg = "<div class='alert alert-success'>" . $stmt->rowCount() . ' Record Inserted</div>';
+					$theMsg = "<div class='alert alert-success'>" . $stmt->rowCount() . ' تم التسجيل </div>';
 
 					redirectHome($theMsg, 'back');
 
@@ -291,7 +291,7 @@
 
 				echo "<div class='container'>";
 
-				$theMsg = '<div class="alert alert-danger">Sorry You Cant Browse This Page Directly</div>';
+				$theMsg = '<div class="alert alert-danger">لا يمكن الدخول المباشر</div>';
 
 				redirectHome($theMsg);
 
@@ -327,41 +327,41 @@
 
 			if ($count > 0) { ?>
 
-				<h1 class="text-center">Edit Item</h1>
+				<h1 class="text-center">تعديل عنصر</h1>
 				<div class="container">
 					<form class="form-horizontal" action="?do=Update" method="POST">
 						<input type="hidden" name="itemid" value="<?php echo $itemid ?>" />
 						<!-- Start Name Field -->
-						<div class="form-group form-group-lg">
-							<label class="col-sm-2 control-label">Name</label>
+						<div class="form-group form-group-lg width">
+							<label class="col-sm-1 control-label">أسم</label>
 							<div class="col-sm-10 col-md-6">
 								<input 
 									type="text" 
 									name="name" 
 									class="form-control" 
 									required="required"  
-									placeholder="Name of The Item"
+									placeholder="أسم المنتج"
 									value="<?php echo $item['Name'] ?>" />
 							</div>
 						</div>
 						<!-- End Name Field -->
 						<!-- Start Country Field -->
-						<div class="form-group form-group-lg">
-							<label class="col-sm-2 control-label">Country</label>
+						<div class="form-group form-group-lg width">
+							<label class="col-sm-1 control-label">البلد</label>
 							<div class="col-sm-10 col-md-6">
 								<input 
 									type="text" 
 									name="country" 
 									class="form-control" 
 									required="required" 
-									placeholder="Country of Made"
+									placeholder="بلد المنتج"
 									value="<?php echo $item['Country_Made'] ?>" />
 							</div>
 						</div>
 						<!-- End Country Field -->
 						<!-- Start Members Field -->
-						<div class="form-group form-group-lg">
-							<label class="col-sm-2 control-label">Member</label>
+						<div class="form-group form-group-lg width">
+							<label class="col-sm-1 control-label">عضو</label>
 							<div class="col-sm-10 col-md-6">
 								<select name="member">
 									<?php
@@ -377,8 +377,8 @@
 						</div>
 						<!-- End Members Field -->
 						<!-- Start Categories Field -->
-						<div class="form-group form-group-lg">
-							<label class="col-sm-2 control-label">Category</label>
+						<div class="form-group form-group-lg width">
+							<label class="col-sm-1 control-label">القسم</label>
 							<div class="col-sm-10 col-md-6">
 								<select name="category">
 									<?php
@@ -400,20 +400,20 @@
 						</div>
 						<!-- End Categories Field -->
 						<!-- Start Tags Field -->
-						<div class="form-group form-group-lg">
-							<label class="col-sm-2 control-label">Tags</label>
+						<div class="form-group form-group-lg width">
+							<label class="col-sm-1 control-label">تاج</label>
 							<div class="col-sm-10 col-md-6">
 								<input 
 									type="text" 
 									name="tags" 
 									class="form-control" 
-									placeholder="Separate Tags With Comma (,)" 
+									placeholder="(,)أستخدم الفاصلة لفصل التاجات"" 
 									value="<?php echo $item['tags'] ?>" />
 							</div>
 						</div>
 						<!-- End Tags Field -->
 						<!-- Start Submit Field -->
-						<div class="form-group form-group-lg">
+						<div class="form-group form-group-lg width">
 							<div class="col-sm-offset-2 col-sm-10">
 								<input type="submit" value="Save Item" class="btn btn-primary btn-sm" />
 							</div>
@@ -446,14 +446,14 @@
 					if (! empty($rows)) {
 						
 					?>
-					<h1 class="text-center">Manage [ <?php echo $item['Name'] ?> ] Comments</h1>
+					<h1 class="text-center">تحكم [ <?php echo $item['Name'] ?> ] تعليق</h1>
 					<div class="table-responsive">
 						<table class="main-table text-center table table-bordered">
 							<tr>
-								<td>Comment</td>
-								<td>User Name</td>
-								<td>Added Date</td>
-								<td>Control</td>
+								<td>تعليق</td>
+								<td>أسم المستخدم</td>
+								<td>تاريخ التسجيل</td>
+								<td>التحكم</td>
 							</tr>
 							<?php
 								foreach($rows as $row) {
@@ -462,13 +462,13 @@
 										echo "<td>" . $row['Member'] . "</td>";
 										echo "<td>" . $row['comment_date'] ."</td>";
 										echo "<td>
-											<a href='comments.php?do=Edit&comid=" . $row['c_id'] . "' class='btn btn-success'><i class='fa fa-edit'></i> Edit</a>
-											<a href='comments.php?do=Delete&comid=" . $row['c_id'] . "' class='btn btn-danger confirm'><i class='fa fa-close'></i> Delete </a>";
+											<a href='comments.php?do=Edit&comid=" . $row['c_id'] . "' class='btn btn-success'><i class='fa fa-edit'></i>تعديل</a>
+											<a href='comments.php?do=Delete&comid=" . $row['c_id'] . "' class='btn btn-danger confirm'><i class='fa fa-close'></i>حذف</a>";
 											if ($row['status'] == 0) {
 												echo "<a href='comments.php?do=Approve&comid="
 														 . $row['c_id'] . "' 
 														class='btn btn-info activate'>
-														<i class='fa fa-check'></i> Approve</a>";
+														<i class='fa fa-check'></i>قبول</a>";
 											}
 										echo "</td>";
 									echo "</tr>";
@@ -488,7 +488,7 @@
 
 				echo "<div class='container'>";
 
-				$theMsg = '<div class="alert alert-danger">Theres No Such ID</div>';
+				$theMsg = '<div class="alert alert-danger">لا يوجد هذا ID</div>';
 
 				redirectHome($theMsg);
 
@@ -517,19 +517,19 @@
 				$formErrors = array();
 
 				if (empty($name)) {
-					$formErrors[] = 'Name Can\'t be <strong>Empty</strong>';
+					$formErrors[] = 'الاسم مطلوب';
 				}
 
 				if (empty($country)) {
-					$formErrors[] = 'Country Can\'t be <strong>Empty</strong>';
+					$formErrors[] = 'الدولة مطلوبة';
 				}
 
 				if ($member == 0) {
-					$formErrors[] = 'You Must Choose the <strong>Member</strong>';
+					$formErrors[] = 'المستخدم مطلوب';
 				}
 
 				if ($cat == 0) {
-					$formErrors[] = 'You Must Choose the <strong>Category</strong>';
+					$formErrors[] = 'القسم مطلوب';
 				}
 
 				// Loop Into Errors Array And Echo It
@@ -559,7 +559,7 @@
 
 					// Echo Success Message
 
-					$theMsg = "<div class='alert alert-success'>" . $stmt->rowCount() . ' Record Updated</div>';
+					$theMsg = "<div class='alert alert-success'>" . $stmt->rowCount() . ' تم التسجيل</div>';
 
 					redirectHome($theMsg, 'back');
 
@@ -567,7 +567,7 @@
 
 			} else {
 
-				$theMsg = '<div class="alert alert-danger">Sorry You Cant Browse This Page Directly</div>';
+				$theMsg = '<div class="alert alert-danger">لا يمكن الدخول المباشر</div>';
 
 				redirectHome($theMsg);
 
@@ -577,7 +577,7 @@
 
 		} elseif ($do == 'Delete') {
 
-			echo "<h1 class='text-center'>Delete Item</h1>";
+			echo "<h1 class='text-center'>حذف المنتج</h1>";
 			echo "<div class='container'>";
 
 				// Check If Get Request Item ID Is Numeric & Get The Integer Value Of It
@@ -598,13 +598,13 @@
 
 					$stmt->execute();
 
-					$theMsg = "<div class='alert alert-success'>" . $stmt->rowCount() . ' Record Deleted</div>';
+					$theMsg = "<div class='alert alert-success'>" . $stmt->rowCount() . 'تم التسجيل</div>';
 
 					redirectHome($theMsg, 'back');
 
 				} else {
 
-					$theMsg = '<div class="alert alert-danger">This ID is Not Exist</div>';
+					$theMsg = '<div class="alert alert-danger">هذا العنصر غير موجود</div>';
 
 					redirectHome($theMsg);
 
@@ -614,7 +614,7 @@
 
 		} elseif ($do == 'Approve') {
 
-			echo "<h1 class='text-center'>Approve Item</h1>";
+			echo "<h1 class='text-center'>قبول المنتج</h1>";
 			echo "<div class='container'>";
 
 				// Check If Get Request Item ID Is Numeric & Get The Integer Value Of It
@@ -633,13 +633,13 @@
 
 					$stmt->execute(array($itemid));
 
-					$theMsg = "<div class='alert alert-success'>" . $stmt->rowCount() . ' Record Updated</div>';
+					$theMsg = "<div class='alert alert-success'>" . $stmt->rowCount() . ' تم التسجيل</div>';
 
 					redirectHome($theMsg, 'back');
 
 				} else {
 
-					$theMsg = '<div class="alert alert-danger">This ID is Not Exist</div>';
+					$theMsg = '<div class="alert alert-danger">هذا العنصر غير موجود</div>';
 
 					redirectHome($theMsg);
 

@@ -74,10 +74,9 @@
 			}
 
 		}
-
 		echo $theMsg;
 
-		echo "<div class='alert alert-info'>You Will Be Redirected to $link After $seconds Seconds.</div>";
+		echo "<div class='alert alert-info'>سوف يتم تحويل خلال $seconds ثواني</div>";
 
 		header("refresh:$seconds;url=$url");
 

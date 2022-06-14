@@ -26,13 +26,13 @@
 
 		<div class="home-stats">
 			<div class="container text-center">
-				<h1>Dashboard</h1>
-				<div class="row">
-					<div class="col-md-3">
-						<div class="stat st-members">
+				<h1>لوحة التحكم</h1>
+				<div class="row main-dashboard">
+					<div class="col-md-3 margin-bottom">
+						<div class="stat st-members section-title">
 							<i class="fa fa-users"></i>
 							<div class="info">
-								Total Members
+								جميع الأعضاء
 								<span>
 									<a href="members.php"><?php echo countItems('UserID', 'users') ?></a>
 								</span>
@@ -40,10 +40,10 @@
 						</div>
 					</div>
 					<div class="col-md-3">
-						<div class="stat st-pending">
+						<div class="stat st-pending margin-bottom">
 							<i class="fa fa-user-plus"></i>
 							<div class="info">
-								Pending Members
+								الأعضاء المعلقون
 								<span>
 									<a href="members.php?do=Manage&page=Pending">
 										<?php echo checkItem("RegStatus", "users", 0) ?>
@@ -52,22 +52,22 @@
 							</div>
 						</div>
 					</div>
-					<div class="col-md-3">
+					<div class="col-md-3 margin-bottom">
 						<div class="stat st-items">
 							<i class="fa fa-tag"></i>
 							<div class="info">
-								Total Items
+								جميع المنتجات
 								<span>
 									<a href="items.php"><?php echo countItems('Item_ID', 'items') ?></a>
 								</span>
 							</div>
 						</div>
 					</div>
-					<div class="col-md-3">
+					<div class="col-md-3 margin-bottom">
 						<div class="stat st-comments">
 							<i class="fa fa-comments"></i>
 							<div class="info">
-								Total Comments
+								جميع التعليقات
 								<span>
 									<a href="comments.php"><?php echo countItems('c_id', 'comments') ?></a>
 								</span>
@@ -84,11 +84,11 @@
 					<div class="col-sm-6">
 						<div class="panel panel-default">
 							<div class="panel-heading">
-								<i class="fa fa-users"></i> 
-								Latest <?php echo $numUsers ?> Registerd Users 
 								<span class="toggle-info pull-right">
 									<i class="fa fa-plus fa-lg"></i>
 								</span>
+								<i class="fa fa-users"></i> 
+								أخر <?php echo $numUsers ?> تسجيل المتسخدمين 
 							</div>
 							<div class="panel-body">
 								<ul class="list-unstyled latest-users">
@@ -99,7 +99,7 @@
 												echo $user['Username'];
 												echo '<a href="members.php?do=Edit&userid=' . $user['UserID'] . '">';
 													echo '<span class="btn btn-success pull-right">';
-														echo '<i class="fa fa-edit"></i> Edit';
+														echo '<i class="fa fa-edit"></i> تعديل';
 														if ($user['RegStatus'] == 0) {
 															echo "<a 
 																	href='members.php?do=Activate&userid=" . $user['UserID'] . "' 
@@ -121,10 +121,10 @@
 					<div class="col-sm-6">
 						<div class="panel panel-default">
 							<div class="panel-heading">
-								<i class="fa fa-tag"></i> Latest <?php echo $numItems ?> Items 
 								<span class="toggle-info pull-right">
 									<i class="fa fa-plus fa-lg"></i>
 								</span>
+								<i class="fa fa-tag"></i> أخر <?php echo $numItems ?> منتج 
 							</div>
 							<div class="panel-body">
 								<ul class="list-unstyled latest-users">
@@ -135,7 +135,7 @@
 													echo $item['Name'];
 													echo '<a href="items.php?do=Edit&itemid=' . $item['Item_ID'] . '">';
 														echo '<span class="btn btn-success pull-right">';
-															echo '<i class="fa fa-edit"></i> Edit';
+															echo '<i class="fa fa-edit"></i> تعديل';
 															if ($item['Approve'] == 0) {
 																echo "<a 
 																		href='items.php?do=Approve&itemid=" . $item['Item_ID'] . "' 
@@ -160,11 +160,11 @@
 					<div class="col-sm-6">
 						<div class="panel panel-default">
 							<div class="panel-heading">
-								<i class="fa fa-comments-o"></i> 
-								Latest <?php echo $numComments ?> Comments 
 								<span class="toggle-info pull-right">
 									<i class="fa fa-plus fa-lg"></i>
 								</span>
+								<i class="fa fa-comments-o"></i> 
+								اخر <?php echo $numComments ?> التعليقات 
 							</div>
 							<div class="panel-body">
 								<?php

@@ -130,7 +130,7 @@
 	</div>
 	<!-- End Add Comment -->
 	<?php } else {
-		echo '<a href="login.php">Login</a> or <a href="login.php">تسجيل</a>';
+		echo '<a href="login.php">دخول</a> أو <a href="login.php">تسجيل</a>';
 	} ?>
 	<hr class="custom-hr">
 		<?php

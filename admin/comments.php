@@ -52,17 +52,17 @@
 
 			?>
 
-			<h1 class="text-center">Manage Comments</h1>
+			<h1 class="text-center">أدارة التعليقات</h1>
 			<div class="container">
 				<div class="table-responsive">
 					<table class="main-table text-center table table-bordered">
 						<tr>
 							<td>ID</td>
-							<td>Comment</td>
-							<td>Item Name</td>
-							<td>User Name</td>
-							<td>Added Date</td>
-							<td>Control</td>
+							<td>التعليق</td>
+							<td>أسم المنتج</td>
+							<td>أسم المستخدم</td>
+							<td>تاريخ الأضافة</td>
+							<td>التحكم</td>
 						</tr>
 						<?php
 							foreach($comments as $comment) {
@@ -73,13 +73,13 @@
 									echo "<td>" . $comment['Member'] . "</td>";
 									echo "<td>" . $comment['comment_date'] ."</td>";
 									echo "<td>
-										<a href='comments.php?do=Edit&comid=" . $comment['c_id'] . "' class='btn btn-success'><i class='fa fa-edit'></i> Edit</a>
-										<a href='comments.php?do=Delete&comid=" . $comment['c_id'] . "' class='btn btn-danger confirm'><i class='fa fa-close'></i> Delete </a>";
+										<a href='comments.php?do=Edit&comid=" . $comment['c_id'] . "' class='btn btn-success'><i class='fa fa-edit'></i> تعديل</a>
+										<a href='comments.php?do=Delete&comid=" . $comment['c_id'] . "' class='btn btn-danger confirm'><i class='fa fa-close'></i> حذف </a>";
 										if ($comment['status'] == 0) {
 											echo "<a href='comments.php?do=Approve&comid="
 													 . $comment['c_id'] . "' 
 													class='btn btn-info activate'>
-													<i class='fa fa-check'></i> Approve</a>";
+													<i class='fa fa-check'></i>قبول</a>";
 										}
 									echo "</td>";
 								echo "</tr>";
@@ -93,7 +93,7 @@
 			<?php } else {
 
 				echo '<div class="container">';
-					echo '<div class="nice-message">There\'s No Comments To Show</div>';
+					echo '<div class="nice-message">لا يوجد تعليقات لعرضها</div>';
 				echo '</div>';
 
 			} ?>
@@ -126,22 +126,22 @@
 
 			if ($count > 0) { ?>
 
-				<h1 class="text-center">Edit Comment</h1>
+				<h1 class="text-center">تعديل التعليق</h1>
 				<div class="container">
 					<form class="form-horizontal" action="?do=Update" method="POST">
 						<input type="hidden" name="comid" value="<?php echo $comid ?>" />
 						<!-- Start Comment Field -->
-						<div class="form-group form-group-lg">
-							<label class="col-sm-2 control-label">Comment</label>
+						<div class="form-group form-group-lg width">
 							<div class="col-sm-10 col-md-6">
 								<textarea class="form-control" name="comment"><?php echo $row['comment'] ?></textarea>
 							</div>
+							<label class="col-sm-1 control-label">تعليق</label>
 						</div>
 						<!-- End Comment Field -->
 						<!-- Start Submit Field -->
-						<div class="form-group form-group-lg">
-							<div class="col-sm-offset-2 col-sm-10">
-								<input type="submit" value="Save" class="btn btn-primary btn-sm" />
+						<div class="form-group form-group-lg width">
+							<div class="col-sm-offset-2 col-sm-4">
+								<input type="submit" value="حفظ" class="btn btn-primary btn-sm" />
 							</div>
 						</div>
 						<!-- End Submit Field -->
@@ -166,7 +166,7 @@
 
 		} elseif ($do == 'Update') { // Update Page
 
-			echo "<h1 class='text-center'>Update Comment</h1>";
+			echo "<h1 class='text-center'>تحديث التعليق</h1>";
 			echo "<div class='container'>";
 
 			if ($_SERVER['REQUEST_METHOD'] == 'POST') {
@@ -184,13 +184,13 @@
 
 				// Echo Success Message
 
-				$theMsg = "<div class='alert alert-success'>" . $stmt->rowCount() . ' Record Updated</div>';
+				$theMsg = "<div class='alert alert-success'>" . $stmt->rowCount() . ' تم التسجيل</div>';
 
 				redirectHome($theMsg, 'back');
 
 			} else {
 
-				$theMsg = '<div class="alert alert-danger">Sorry You Cant Browse This Page Directly</div>';
+				$theMsg = '<div class="alert alert-danger">لا يمكن الدخول مباشر</div>';
 
 				redirectHome($theMsg);
 
@@ -200,7 +200,7 @@
 
 		} elseif ($do == 'Delete') { // Delete Page
 
-			echo "<h1 class='text-center'>Delete Comment</h1>";
+			echo "<h1 class='text-center'>حذف التعليق</h1>";
 
 			echo "<div class='container'>";
 
@@ -222,13 +222,13 @@
 
 					$stmt->execute();
 
-					$theMsg = "<div class='alert alert-success'>" . $stmt->rowCount() . ' Record Deleted</div>';
+					$theMsg = "<div class='alert alert-success'>" . $stmt->rowCount() . ' تم التسجيل</div>';
 
 					redirectHome($theMsg, 'back');
 
 				} else {
 
-					$theMsg = '<div class="alert alert-danger">This ID is Not Exist</div>';
+					$theMsg = '<div class="alert alert-danger">هذا العنصر غير موجود</div>';
 
 					redirectHome($theMsg);
 
@@ -238,7 +238,7 @@
 
 		} elseif ($do == 'Approve') {
 
-			echo "<h1 class='text-center'>Approve Comment</h1>";
+			echo "<h1 class='text-center'>قبول التعليق</h1>";
 			echo "<div class='container'>";
 
 				// Check If Get Request comid Is Numeric & Get The Integer Value Of It
@@ -257,13 +257,13 @@
 
 					$stmt->execute(array($comid));
 
-					$theMsg = "<div class='alert alert-success'>" . $stmt->rowCount() . ' Record Approved</div>';
+					$theMsg = "<div class='alert alert-success'>" . $stmt->rowCount() . 'تم التسجيل</div>';
 
 					redirectHome($theMsg, 'back');
 
 				} else {
 
-					$theMsg = '<div class="alert alert-danger">This ID is Not Exist</div>';
+					$theMsg = '<div class="alert alert-danger">هذا العنصر غير موجود</div>';
 
 					redirectHome($theMsg);
 

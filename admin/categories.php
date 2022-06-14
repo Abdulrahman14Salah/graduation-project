@@ -40,18 +40,15 @@
 
 			?>
 
-			<h1 class="text-center">Manage Categories</h1>
+			<h1 class="text-center">أدارة الأقسام</h1>
 			<div class="container categories">
 				<div class="panel panel-default">
 					<div class="panel-heading">
-						<i class="fa fa-edit"></i> Manage Categories
+						<i class="fa fa-edit"></i> أدارة الأقسام
 						<div class="option pull-right">
-							<i class="fa fa-sort"></i> Ordering: [
-							<a class="<?php if ($sort == 'asc') { echo 'active'; } ?>" href="?sort=asc">Asc</a> | 
-							<a class="<?php if ($sort == 'desc') { echo 'active'; } ?>" href="?sort=desc">Desc</a> ]
-							<i class="fa fa-eye"></i> View: [
-							<span class="active" data-view="full">Full</span> |
-							<span data-view="classic">Classic</span> ]
+							<i class="fa fa-sort"></i> ترتيب : [
+							<a class="<?php if ($sort == 'asc') { echo 'active'; } ?>" href="?sort=asc">تصاعدي</a> | 
+							<a class="<?php if ($sort == 'desc') { echo 'active'; } ?>" href="?sort=desc">تنازلي</a> ]
 						</div>
 					</div>
 					<div class="panel-body">
@@ -59,12 +56,11 @@
 							foreach($cats as $cat) {
 								echo "<div class='cat'>";
 									echo "<div class='hidden-buttons'>";
-										echo "<a href='categories.php?do=Edit&catid=" . $cat['ID'] . "' class='btn btn-xs btn-primary'><i class='fa fa-edit'></i> Edit</a>";
-										echo "<a href='categories.php?do=Delete&catid=" . $cat['ID'] . "' class='confirm btn btn-xs btn-danger'><i class='fa fa-close'></i> Delete</a>";
+										echo "<a href='categories.php?do=Edit&catid=" . $cat['ID'] . "' class='btn btn-xs btn-primary'><i class='fa fa-edit'></i> تعديل</a>";
+										echo "<a href='categories.php?do=Delete&catid=" . $cat['ID'] . "' class='confirm btn btn-xs btn-danger'><i class='fa fa-close'></i> حذف</a>";
 									echo "</div>";
 									echo "<h3>" . $cat['Name'] . '</h3>';
 									echo "<div class='full-view'>";
-										echo "<p>"; if($cat['Description'] == '') { echo 'This category has no description'; } else { echo $cat['Description']; } echo "</p>";
 										if($cat['Visibility'] == 1) { echo '<span class="visibility cat-span"><i class="fa fa-eye"></i> Hidden</span>'; } 
 										if($cat['Allow_Comment'] == 1) { echo '<span class="commenting cat-span"><i class="fa fa-close"></i> Comment Disabled</span>'; }
 										if($cat['Allow_Ads'] == 1) { echo '<span class="advertises cat-span"><i class="fa fa-close"></i> Ads Disabled</span>'; }  
@@ -78,7 +74,7 @@
 										foreach ($childCats as $c) {
 											echo "<li class='child-link'>
 												<a href='categories.php?do=Edit&catid=" . $c['ID'] . "'>" . $c['Name'] . "</a>
-												<a href='categories.php?do=Delete&catid=" . $c['ID'] . "' class='show-delete confirm'> Delete</a>
+												<a href='categories.php?do=Delete&catid=" . $c['ID'] . "' class='show-delete confirm'> حذف</a>
 											</li>";
 										}
 										echo "</ul>";
@@ -90,15 +86,15 @@
 						?>
 					</div>
 				</div>
-				<a class="add-category btn btn-primary" href="categories.php?do=Add"><i class="fa fa-plus"></i> Add New Category</a>
+				<a class="add-category btn btn-primary" href="categories.php?do=Add"><i class="fa fa-plus"></i> أضافة قسم جديد</a>
 			</div>
 
 			<?php } else {
 
 				echo '<div class="container">';
-					echo '<div class="nice-message">There\'s No Categories To Show</div>';
+					echo '<div class="nice-message">لا يوجد أقسام لعرضها</div>';
 					echo '<a href="categories.php?do=Add" class="btn btn-primary">
-							<i class="fa fa-plus"></i> New Category
+							<i class="fa fa-plus"></i> قسم جديد
 						</a>';
 				echo '</div>';
 
@@ -108,106 +104,67 @@
 
 		} elseif ($do == 'Add') { ?>
 
-			<h1 class="text-center">Add New Category</h1>
+			<h1 class="text-center">أضافة قسم جديد</h1>
 			<div class="container">
-				<form class="form-horizontal" action="?do=Insert" method="POST" enctype="multipart/form-data">
+				<form class="form-horizontal form" action="?do=Insert" method="POST" enctype="multipart/form-data">
 					<!-- Start Name Field -->
-					<div class="form-group form-group-lg">
-						<label class="col-sm-2 control-label">Name</label>
+					<div class="form-group-add form-group">
 						<div class="col-sm-10 col-md-6">
-							<input type="text" name="name" class="form-control" autocomplete="off" required="required" placeholder="Name Of The Category" />
+							<input type="text" name="name" class="form-control" autocomplete="off" required="required" placeholder="أسم القسم" />
 						</div>
+						<label class="col-sm-1 control-label">الأسم</label>
 					</div>
 					<!-- End Name Field -->
-					<!-- Start Description Field -->
-					<div class="form-group form-group-lg">
-						<label class="col-sm-2 control-label">Description</label>
-						<div class="col-sm-10 col-md-6">
-							<input type="text" name="description" class="form-control" placeholder="Describe The Category" />
-						</div>
-					</div>
-					<!-- End Description Field -->
 					<!-- Start Ordering Field -->
-					<div class="form-group form-group-lg">
-						<label class="col-sm-2 control-label">Ordering</label>
+					<div class="form-group-add form-group">
 						<div class="col-sm-10 col-md-6">
-							<input type="text" name="ordering" class="form-control" placeholder="Number To Arrange The Categories" />
+							<input type="text" name="ordering" class="form-control" placeholder="عدد لترتيب الأقسام" />
 						</div>
+						<label class="col-sm-1 control-label">الترتيب</label>
 					</div>
 					<!-- End Ordering Field -->
-					<!-- Start Category Type -->
-					<div class="form-group form-group-lg">
-						<label class="col-sm-2 control-label">Parent?</label>
-						<div class="col-sm-10 col-md-6">
-							<select name="parent">
-								<option value="0">None</option>
-								<?php 
-									$allCats = getAllFrom("*", "categories", "where parent = 0", "", "ID", "ASC");
-									foreach($allCats as $cat) {
-										echo "<option value='" . $cat['ID'] . "'>" . $cat['Name'] . "</option>";
-									}
-								?>
-							</select>
-						</div>
-					</div>
-					<!-- End Category Type -->
 					<!-- Start Visibility Field -->
-					<div class="form-group form-group-lg">
-						<label class="col-sm-2 control-label">Visible</label>
-						<div class="col-sm-10 col-md-6">
+					<div class="form-group-add form-group">
+						<div class="col-sm-10 col-md-6 group-check">
 							<div>
 								<input id="vis-yes" type="radio" name="visibility" value="0" checked />
-								<label for="vis-yes">Yes</label> 
+								<label for="vis-yes">نعم</label> 
 							</div>
 							<div>
 								<input id="vis-no" type="radio" name="visibility" value="1" />
-								<label for="vis-no">No</label> 
+								<label for="vis-no">لا</label> 
 							</div>
 						</div>
+						<label class="col-sm-1 control-label">الظهور</label>
 					</div>
 					<!-- End Visibility Field -->
 					<!-- Start Commenting Field -->
-					<div class="form-group form-group-lg">
-						<label class="col-sm-2 control-label">Allow Commenting</label>
-						<div class="col-sm-10 col-md-6">
+					<div class="form-group-add form-group">
+						<div class="col-sm-10 col-md-6 group-check">
 							<div>
 								<input id="com-yes" type="radio" name="commenting" value="0" checked />
-								<label for="com-yes">Yes</label> 
+								<label for="com-yes">نعم</label> 
 							</div>
 							<div>
 								<input id="com-no" type="radio" name="commenting" value="1" />
-								<label for="com-no">No</label> 
+								<label for="com-no">لا</label> 
 							</div>
 						</div>
+						<label class="col-sm-1 control-label">قبول التعليقات</label>
 					</div>
 					<!-- End Commenting Field -->
-					<!-- Start Ads Field -->
-					<div class="form-group form-group-lg">
-						<label class="col-sm-2 control-label">Allow Ads</label>
-						<div class="col-sm-10 col-md-6">
-							<div>
-								<input id="ads-yes" type="radio" name="ads" value="0" checked />
-								<label for="ads-yes">Yes</label> 
-							</div>
-							<div>
-								<input id="ads-no" type="radio" name="ads" value="1" />
-								<label for="ads-no">No</label> 
-							</div>
-						</div>
-					</div>
-					<!-- End Ads Field -->
 					<!-- Start Image Field -->
-					<div class="form-group form-group-lg">
-						<label class="col-sm-2 control-label">image</label>
-						<div class="col-sm-10 col-md-6">
+					<div class="form-group-add form-group flex-row-reverse">
+						<div class="col-sm-10 col-md-6 group-check">
 							<input type="file" name="imagecat" class="form-control" required="required" />
 						</div>
+						<label class="col-sm-1 control-label">الصورة</label>
 					</div>
 					<!-- End Image Field -->
 					<!-- Start Submit Field -->
-					<div class="form-group form-group-lg">
-						<div class="col-sm-offset-2 col-sm-10">
-							<input type="submit" value="Add Category" class="btn btn-primary btn-lg" />
+					<div class="form-group-add form-group">
+						<div class="col-sm-5">
+							<input type="submit" value="أضافة قسم" class="btn btn-primary btn-sm" />
 						</div>
 					</div>
 					<!-- End Submit Field -->
@@ -233,12 +190,9 @@
 				// Get Variables From The Form
 
 				$name 		= $_POST['name'];
-				$desc 		= $_POST['description'];
-				$parent 	= $_POST['parent'];
 				$order 		= $_POST['ordering'];
 				$visible 	= $_POST['visibility'];
 				$comment 	= $_POST['commenting'];
-				$ads 		= $_POST['ads'];
 
 				// Check If Category Exist in Database
 
@@ -246,7 +200,7 @@
 
 				if ($check == 1) {
 
-					$theMsg = '<div class="alert alert-danger">Sorry This Category Is Exist</div>';
+					$theMsg = '<div class="alert alert-danger">هذا القسم موجود بالفعل</div>';
 
 					redirectHome($theMsg, 'back');
 
@@ -261,24 +215,21 @@
 
 					$stmt = $con->prepare("INSERT INTO 
 
-						categories(Name, Description, parent, Ordering, Visibility, Allow_Comment, Allow_Ads, image)
+						categories(Name,  Ordering, Visibility, Allow_Comment, image)
 
-					VALUES(:zname, :zdesc, :zparent, :zorder, :zvisible, :zcomment, :zads, :zimage)");
+					VALUES(:zname, :zorder, :zvisible, :zcomment, :zimage)");
 
 					$stmt->execute(array(
 						'zname' 	=> $name,
-						'zdesc' 	=> $desc,
-						'zparent' 	=> $parent,
 						'zorder' 	=> $order,
 						'zvisible' 	=> $visible,
 						'zcomment' 	=> $comment,
-						'zads'		=> $ads,
 						'zimage'	=> $imagecat
 					));
 
 					// Echo Success Message
 
-					$theMsg = "<div class='alert alert-success'>" . $stmt->rowCount() . ' Record Inserted</div>';
+					$theMsg = "<div class='alert alert-success'>" . $stmt->rowCount() . ' تم ادراج العنصر</div>';
 
 					redirectHome($theMsg, 'back');
 
@@ -288,7 +239,7 @@
 
 				echo "<div class='container'>";
 
-				$theMsg = '<div class="alert alert-danger">Sorry You Cant Browse This Page Directly</div>';
+				$theMsg = '<div class="alert alert-danger">عذرا لا يمكنك تصفح هذه الصفحة مباشرة</div>';
 
 				redirectHome($theMsg, 'back');
 
@@ -324,101 +275,61 @@
 
 			if ($count > 0) { ?>
 
-				<h1 class="text-center">Edit Category</h1>
+				<h1 class="text-center">تعديل القسم</h1>
 				<div class="container">
-					<form class="form-horizontal" action="?do=Update" method="POST">
+					<form class="form-horizontal width" action="?do=Update" method="POST">
 						<input type="hidden" name="catid" value="<?php echo $catid ?>" />
 						<!-- Start Name Field -->
 						<div class="form-group form-group-lg">
-							<label class="col-sm-2 control-label">Name</label>
 							<div class="col-sm-10 col-md-6">
 								<input type="text" name="name" class="form-control" required="required" placeholder="Name Of The Category" value="<?php echo $cat['Name'] ?>" />
 							</div>
+							<label class="col-sm-1 control-label">الأسم</label>
 						</div>
 						<!-- End Name Field -->
-						<!-- Start Description Field -->
-						<div class="form-group form-group-lg">
-							<label class="col-sm-2 control-label">Description</label>
-							<div class="col-sm-10 col-md-6">
-								<input type="text" name="description" class="form-control" placeholder="Describe The Category" value="<?php echo $cat['Description'] ?>" />
-							</div>
-						</div>
-						<!-- End Description Field -->
 						<!-- Start Ordering Field -->
 						<div class="form-group form-group-lg">
-							<label class="col-sm-2 control-label">Ordering</label>
 							<div class="col-sm-10 col-md-6">
-								<input type="text" name="ordering" class="form-control" placeholder="Number To Arrange The Categories" value="<?php echo $cat['Ordering'] ?>" />
+								<input type="text" name="ordering" class="form-control" placeholder="عدد لترتيب العناصر" value="<?php echo $cat['Ordering'] ?>" />
 							</div>
+							<label class="col-sm-1 control-label">الترتيب</label>
 						</div>
 						<!-- End Ordering Field -->
-						<!-- Start Category Type -->
-						<div class="form-group form-group-lg">
-							<label class="col-sm-2 control-label">Parent?</label>
-							<div class="col-sm-10 col-md-6">
-								<select name="parent">
-									<option value="0">None</option>
-									<?php 
-										$allCats = getAllFrom("*", "categories", "where parent = 0", "", "ID", "ASC");
-										foreach($allCats as $c) {
-											echo "<option value='" . $c['ID'] . "'";
-											if ($cat['parent'] == $c['ID']) { echo ' selected'; }
-											echo ">" . $c['Name'] . "</option>";
-										}
-									?>
-								</select>
-							</div>
-						</div>
-						<!-- End Category Type -->
 						<!-- Start Visibility Field -->
 						<div class="form-group form-group-lg">
-							<label class="col-sm-2 control-label">Visible</label>
+							
 							<div class="col-sm-10 col-md-6">
 								<div>
 									<input id="vis-yes" type="radio" name="visibility" value="0" <?php if ($cat['Visibility'] == 0) { echo 'checked'; } ?> />
-									<label for="vis-yes">Yes</label> 
+									<label for="vis-yes">نعم</label> 
 								</div>
 								<div>
 									<input id="vis-no" type="radio" name="visibility" value="1" <?php if ($cat['Visibility'] == 1) { echo 'checked'; } ?> />
-									<label for="vis-no">No</label> 
+									<label for="vis-no">لا</label> 
 								</div>
 							</div>
+							<label class="col-sm-1 control-label">عرض</label>
 						</div>
 						<!-- End Visibility Field -->
 						<!-- Start Commenting Field -->
 						<div class="form-group form-group-lg">
-							<label class="col-sm-2 control-label">Allow Commenting</label>
 							<div class="col-sm-10 col-md-6">
 								<div>
 									<input id="com-yes" type="radio" name="commenting" value="0" <?php if ($cat['Allow_Comment'] == 0) { echo 'checked'; } ?> />
-									<label for="com-yes">Yes</label> 
+									<label for="com-yes">نعم</label> 
 								</div>
 								<div>
 									<input id="com-no" type="radio" name="commenting" value="1" <?php if ($cat['Allow_Comment'] == 1) { echo 'checked'; } ?> />
-									<label for="com-no">No</label> 
+									<label for="com-no">لا</label> 
 								</div>
 							</div>
+							<label class="col-sm-1 control-label">قبول التعليق</label>
 						</div>
 						<!-- End Commenting Field -->
-						<!-- Start Ads Field -->
-						<div class="form-group form-group-lg">
-							<label class="col-sm-2 control-label">Allow Ads</label>
-							<div class="col-sm-10 col-md-6">
-								<div>
-									<input id="ads-yes" type="radio" name="ads" value="0" <?php if ($cat['Allow_Ads'] == 0) { echo 'checked'; } ?>/>
-									<label for="ads-yes">Yes</label> 
-								</div>
-								<div>
-									<input id="ads-no" type="radio" name="ads" value="1" <?php if ($cat['Allow_Ads'] == 1) { echo 'checked'; } ?>/>
-									<label for="ads-no">No</label> 
-								</div>
-							</div>
-						</div>
-						<!-- End Ads Field -->
 						<!-- Start Submit Field -->
 						<div class="form-group form-group-lg">
-							<div class="col-sm-offset-2 col-sm-10">
-								<input type="submit" value="Save" class="btn btn-primary btn-lg" />
+							<div class="col-sm-offset-2 col-sm-4">
+								<input type="submit" value="حفظ" class="btn btn-primary btn-sm" />
 							</div>
 						</div>
 						<!-- End Submit Field -->
@@ -433,7 +344,7 @@
 
 				echo "<div class='container'>";
 
-				$theMsg = '<div class="alert alert-danger">Theres No Such ID</div>';
+				$theMsg = '<div class="alert alert-danger">لا يوجد هذا ID</div>';
 
 				redirectHome($theMsg);
 
@@ -443,7 +354,7 @@
 
 		} elseif ($do == 'Update') {
 
-			echo "<h1 class='text-center'>Update Category</h1>";
+			echo "<h1 class='text-center'>تحديث الأقسام</h1>";
 			echo "<div class='container'>";
 
 			if ($_SERVER['REQUEST_METHOD'] == 'POST') {
@@ -452,13 +363,9 @@
 
 				$id 		= $_POST['catid'];
 				$name 		= $_POST['name'];
-				$desc 		= $_POST['description'];
 				$order 		= $_POST['ordering'];
-				$parent 	= $_POST['parent'];
-
 				$visible 	= $_POST['visibility'];
 				$comment 	= $_POST['commenting'];
-				$ads 		= $_POST['ads'];
 
 				// Update The Database With This Info
 
@@ -466,26 +373,23 @@
 											categories 
 										SET 
 											Name = ?, 
-											Description = ?, 
-											Ordering = ?, 
-											parent = ?,
+											Ordering = ?,
 											Visibility = ?,
 											Allow_Comment = ?,
-											Allow_Ads = ? 
 										WHERE 
 											ID = ?");
 
-				$stmt->execute(array($name, $desc, $order, $parent, $visible, $comment, $ads, $id));
+				$stmt->execute(array($name, $order, $visible, $comment, $id));
 
 				// Echo Success Message
 
-				$theMsg = "<div class='alert alert-success'>" . $stmt->rowCount() . ' Record Updated</div>';
+				$theMsg = "<div class='alert alert-success'>" . $stmt->rowCount() . ' تم تحديث السجل</div>';
 
 				redirectHome($theMsg, 'back');
 
 			} else {
 
-				$theMsg = '<div class="alert alert-danger">Sorry You Cant Browse This Page Directly</div>';
+				$theMsg = '<div class="alert alert-danger">لا يمكن الدخول المباشر</div>';
 
 				redirectHome($theMsg);
 
@@ -495,7 +399,7 @@
 
 		} elseif ($do == 'Delete') {
 
-			echo "<h1 class='text-center'>Delete Category</h1>";
+			echo "<h1 class='text-center'>حذف القسم</h1>";
 			echo "<div class='container'>";
 
 				// Check If Get Request Catid Is Numeric & Get The Integer Value Of It
@@ -516,13 +420,13 @@
 
 					$stmt->execute();
 
-					$theMsg = "<div class='alert alert-success'>" . $stmt->rowCount() . ' Record Deleted</div>';
+					$theMsg = "<div class='alert alert-success'>" . $stmt->rowCount() . ' تم حذف السجل</div>';
 
 					redirectHome($theMsg, 'back');
 
 				} else {
 
-					$theMsg = '<div class="alert alert-danger">This ID is Not Exist</div>';
+					$theMsg = '<div class="alert alert-danger">لا يوجد هذا العنصر</div>';
 
 					redirectHome($theMsg);
 
