@@ -9,8 +9,8 @@
 		$info = $getUser->fetch();
 		$userid = $info['UserID'];
 ?>
-<h1 class="text-center">الملف الشخصي</h1>
 <div class="container">
+	<h1 class="text-center">الملف الشخصي</h1>
 	<table class="table">
 		<thead>
 			<tr>
