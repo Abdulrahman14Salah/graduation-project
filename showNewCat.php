@@ -14,9 +14,12 @@
 						<div class="card">
 							<div class="img"><img src="admin/uploads/items/'. $item['Image'] . '" alt=""></div>
 							<div class="card-body text-center">
-								<h4 class="card-title"><a href="items.php?itemid='. $item['Item_ID'] .'">' . $item['Name'] . $item['Price'] .'</a></h4>
-								<p class="card-text">' . $item['Country_Made'] . '</p>
-								<div class="date">' . $item['Add_Date'] . '</div>
+								<h4 class="card-title"><a href="items.php?itemid='. $item['Item_ID'] .'">' . $item['Name'] .'</a></h4>
+								<div class="card-price"><span>' . $item['Price'] . '</span><span class="bound">ج</span></span></div>
+								<div class="sub-title d-flex justify-content-between">
+									<p class="card-text">' . $item['Country_Made'] . '</p>
+									<div class="date">' . $item['Add_Date'] . '</div>
+								</div>
 							</div>
 						</div>
 					</div>';
