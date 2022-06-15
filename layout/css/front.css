@@ -414,6 +414,7 @@ a {
 }
 .item-info ul li {
 	padding: 10px;
+	font-weight: bold;
 }
 .item-info ul li:nth-child(odd) {
 	background-color: #e8e8e8;

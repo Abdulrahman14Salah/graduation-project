@@ -1,11 +1,12 @@
-<?php 
+<?php
+	ob_start();
 	session_start();
 	include 'init.php';
 	$pageTitle = 'أحدث المنتجات';
     $allItems = getAllFrom('*', 'items', 'where Approve = 1', '', 'Item_ID');
 ?>
 <div class="container">
-	<div class="main-title text-center"><h1 class="text-center">أحدث المنتجات</h1></div>
+	<div class="main-title text-center"><h1 class="text-center"><?php echo $pageTitle ?></h1></div>
     <div class="row mt-3 new-item">
 		<?php
 			foreach ($allItems as $item) {
@@ -28,4 +29,7 @@
 		</div>
 </div>
 
-<?php include $tpl . 'footer.php'; ?>
+<?php 
+include $tpl . 'footer.php'; 
+ob_end_flush();
+?>

@@ -48,19 +48,23 @@
 			<ul class="list-unstyled">
 				<li>
 					<i class="fa fa-calendar fa-fw"></i>
+					<span>سعر المنتج</span> : <?php echo $item['Price'] ?>
+				</li>
+				<li>
+					<i class="fa fa-calendar fa-fw"></i>
 					<span>تاريخ الأضافة</span> : <?php echo $item['Add_Date'] ?>
 				</li>
 				<li>
 					<i class="fa fa-building fa-fw"></i>
-					<span>صنع في : </span><?php echo $item['Country_Made'] ?>
+					<span>صنع في</span> : <?php echo $item['Country_Made'] ?>
 				</li>
 				<li>
 					<i class="fa fa-tags fa-fw"></i>
-					<span>قسم : </span><a href="categories.php?pageid=<?php echo $item['Cat_ID'] ?>"><?php echo $item['category_name'] ?></a>
+					<span>قسم </span>:<a href="categories.php?pageid=<?php echo $item['Cat_ID'] ?>"><?php echo $item['category_name'] ?></a>
 				</li>
 				<li>
 					<i class="fa fa-user fa-fw"></i>
-					<span>أضاف بواسطة : </span><a href="profile.php"><?php echo $item['Username'] ?></a>
+					<span>أضاف بواسطة</span> : <a href="profile.php"><?php echo $item['Username'] ?></a>
 				</li>
 				<li class="tags-items">
 					<i class="fa fa-user fa-fw"></i>
