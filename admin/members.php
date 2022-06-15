@@ -117,49 +117,48 @@
 				<form class="form-horizontal" action="?do=Insert" method="POST" enctype="multipart/form-data">
 					<!-- Start Username Field -->
 					<div class="form-group form-group-lg width">
-						<label class="col-sm-2 control-label">أسم المستخدم</label>
 						<div class="col-sm-10 col-md-6">
 							<input type="text" name="username" class="form-control" autocomplete="off" required="required" placeholder="أدخل أسم المستخدم" />
 						</div>
+						<label class="col-sm-2 control-label">أسم المستخدم</label>
 					</div>
 					<!-- End Username Field -->
 					<!-- Start Password Field -->
 					<div class="form-group form-group-lg width">
-						<label class="col-sm-2 control-label">كلمة السر</label>
 						<div class="col-sm-10 col-md-6">
 							<input type="password" name="password" class="password form-control" required="required" autocomplete="new-password" placeholder="كلمة سر" />
-							<i class="show-pass fa fa-eye fa-2x"></i>
 						</div>
+						<label class="col-sm-2 control-label">كلمة السر</label>
 					</div>
 					<!-- End Password Field -->
 					<!-- Start Email Field -->
 					<div class="form-group form-group-lg width">
-						<label class="col-sm-2 control-label">البريد الألكتروني</label>
 						<div class="col-sm-10 col-md-6">
 							<input type="email" name="email" class="form-control" required="required" placeholder="ادخل البريد الألكتروني" />
 						</div>
+						<label class="col-sm-2 control-label">البريد الألكتروني</label>
 					</div>
 					<!-- End Email Field -->
 					<!-- Start Full Name Field -->
 					<div class="form-group form-group-lg width">
-						<label class="col-sm-2 control-label">الأسم بالكامل</label>
 						<div class="col-sm-10 col-md-6">
 							<input type="text" name="full" class="form-control" required="required" placeholder="أدخل الأسم بالكامل" />
 						</div>
+						<label class="col-sm-2 control-label">الأسم بالكامل</label>
 					</div>
 					<!-- End Full Name Field -->
 					<!-- Start Avatar Field -->
 					<div class="form-group form-group-lg width">
-						<label class="col-sm-2 control-label">User Avatar</label>
 						<div class="col-sm-10 col-md-6">
 							<input type="file" name="avatar" class="form-control" required="required" />
 						</div>
+						<label class="col-sm-2 control-label">User Avatar</label>
 					</div>
 					<!-- End Avatar Field -->
 					<!-- Start Submit Field -->
 					<div class="form-group form-group-lg width">
-						<div class="col-sm-offset-2 col-sm-10">
-							<input type="submit" value="Add Member" class="btn btn-primary btn-lg" />
+						<div class="col-sm-offset-2 col-sm-4">
+							<input type="submit" value="أضافة عضو" class="btn btn-primary btn-sm" />
 						</div>
 					</div>
 					<!-- End Submit Field -->

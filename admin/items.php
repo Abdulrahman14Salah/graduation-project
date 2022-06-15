@@ -57,6 +57,7 @@
 						<tr>
 							<td>#ID</td>
 							<td>أسم المنتج</td>
+							<td>سعر المنتج</td>
 							<td>تاريخ الأضافة</td>
 							<td>القسم</td>
 							<td>أسم المستخد</td>
@@ -67,6 +68,7 @@
 								echo "<tr>";
 									echo "<td>" . $item['Item_ID'] . "</td>";
 									echo "<td>" . $item['Name'] . "</td>";
+									echo "<td>" . $item['Price'] . "</td>";
 									echo "<td>" . $item['Add_Date'] ."</td>";
 									echo "<td>" . $item['category_name'] ."</td>";
 									echo "<td>" . $item['Username'] ."</td>";

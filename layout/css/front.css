@@ -175,13 +175,11 @@ a {
 	margin-left: 10px;
 	width: 35px;
 	height: 35px;
-	background-color: #de0;
 	text-align: center;
 	border-radius: 50%;
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	background-color: #ddd;
 	cursor: pointer;
 	transition: 0.1s all ease-in-out;
 }
@@ -192,7 +190,7 @@ a {
 	color: white;
 }
 .social-links ul li svg {
-	color: #afb2b5;
+	color: #cdab4c;
 }
 .nav-categories {
 	background-color: #eee;
@@ -509,6 +507,7 @@ a {
 .cont-item {
 	max-width: 300px;
 	margin-bottom: 25px;
+	position: relative;
 }
 .cont-item .card-body {
 	font-weight: bold !important;
@@ -542,6 +541,16 @@ a {
 }
 .new-item .card .card-body .date {
 	align-items: center;
+}
+.new-item .card .card-body .card-price {
+	position: absolute;
+    top: 10px;
+	right: 0;
+    background: #cdab4c;
+    padding: 3px 10px;
+}
+.new-item .card .card-body .card-price .bound {
+	margin: 3px;
 }
 /* End New Items */
 /* About Us */
@@ -660,6 +669,7 @@ a {
 }
 .links-footer .tell p svg {
 	margin-left: 10px;
+	color: #cdab4c !important;
 }
 .links-footer .categories-links p a {
 	text-decoration: none;
