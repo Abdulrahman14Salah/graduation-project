@@ -3,6 +3,7 @@
 	<head>
     <meta charset="utf-8" />
 		<title><?php getTitle() ?></title>
+    <link rel="shortcut icon" href="uploads/logo1.PNG"/>
     <link rel="stylesheet" href="<?php echo $css ?>bootstrap.rtl.min.css" />
     <link rel="stylesheet" href="<?php echo $css ?>all.min.css" />
 		<link rel="stylesheet" href="<?php echo $css ?>front.css" />

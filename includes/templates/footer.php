@@ -63,7 +63,7 @@
                 <li><i class="fa-brands fa-facebook-f"></i></li>
                 <li><i class="fa-brands fa-twitter"></i></li>
                 <li><i class="fa-brands fa-instagram"></i></li>
-                <li><i class="fa-brands fa-whatsapp"></i></li>
+                <li><a href="http://web.whatsapp.com/send?phone=2001121600780"><i class="fa-brands fa-whatsapp"></i></a></li>
               </ul>
             </div>
           </div>
