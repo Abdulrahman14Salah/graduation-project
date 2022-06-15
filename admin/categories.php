@@ -10,7 +10,7 @@
 
 	session_start();
 
-	$pageTitle = 'Categories';
+	$pageTitle = 'الأقسام';
 
 	if (isset($_SESSION['Username'])) {
 

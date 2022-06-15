@@ -1,7 +1,7 @@
 <?php
 	ob_start();
 	session_start();
-	$pageTitle = 'Profile';
+	$pageTitle = 'الملف الشخصي';
 	include 'init.php';
 	if (isset($_SESSION['user'])) {
 		$getUser = $con->prepare("SELECT * FROM users WHERE Username = ?");

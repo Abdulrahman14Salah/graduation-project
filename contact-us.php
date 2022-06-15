@@ -1,7 +1,7 @@
 <?php 
 	ob_start();
 	session_start();
-	$pageTitle = 'About Us';
+	$pageTitle = 'تواصل معنا';
 	include 'init.php';
 ?>
 <div class="container main-contact-us mt-5">

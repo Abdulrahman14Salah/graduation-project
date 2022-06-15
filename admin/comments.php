@@ -11,7 +11,7 @@
 
 	session_start();
 
-	$pageTitle = 'Comments';
+	$pageTitle = 'التعليقات';
 
 	if (isset($_SESSION['Username'])) {
 

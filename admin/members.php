@@ -11,7 +11,7 @@
 
 	session_start();
 
-	$pageTitle = 'Members';
+	$pageTitle = 'الأعضاء';
 
 	if (isset($_SESSION['Username'])) {
 

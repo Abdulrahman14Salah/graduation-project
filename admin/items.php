@@ -10,7 +10,7 @@
 
 	session_start();
 
-	$pageTitle = 'Items';
+	$pageTitle = 'منتج';
 
 	if (isset($_SESSION['Username'])) {
 
@@ -122,6 +122,20 @@
 						<label class="col-sm-1 control-label">الأسم</label>
 					</div>
 					<!-- End Name Field -->
+					<!-- Start Price Field -->
+					<div class="form-group form-group-lg width">
+								<div class="col-sm-6 col-md-6">
+									<input 
+										type="text" 
+										name="price" 
+										class="form-control live" 
+										placeholder="سعر المنتج" 
+										data-class=".live-price" 
+										required />
+								</div>
+								<label class="col-sm-1 control-label">السعر</label>
+							</div>
+							<!-- End Price Field -->
 					<!-- Start Country Field -->
 					<div class="form-group form-group-lg width">
 						<div class="col-sm-10 col-md-6">
@@ -178,7 +192,7 @@
 								type="text" 
 								name="tags" 
 								class="form-control" 
-								placeholder="(,)أفصل التاج بــ" />
+								placeholder="أفصل التاج بـ(,)" />
 						</div>
 						<label class="col-sm-1 control-label">تاج</label>
 					</div>
@@ -220,6 +234,7 @@
 				// Get Variables From The Form
 
 				$name		= $_POST['name'];
+				$price		= $_POST['price'];
 				$country 	= $_POST['country'];
 				$member 	= $_POST['member'];
 				$cat 		= $_POST['category'];
@@ -231,6 +246,10 @@
 
 				if (empty($name)) {
 					$formErrors[] = 'الأسم لا يمكن أن يكون فارغ';
+				}
+
+				if (empty($price)) {
+					$formErrors[] = 'السعر لا يمكن أن يكون فارغ';
 				}
 
 				if (empty($country)) {
@@ -264,13 +283,14 @@
 
 					$stmt = $con->prepare("INSERT INTO 
 
-						items(Name, Country_Made, Add_Date, Cat_ID, Member_ID, tags, image)
+						items(Name, Price,Country_Made, Add_Date, Cat_ID, Member_ID, tags, image)
 
-						VALUES(:zname, :zcountry, now(), :zcat, :zmember, :ztags, :zimage)");
+						VALUES(:zname, :zprice,:zcountry, now(), :zcat, :zmember, :ztags, :zimage)");
 
 					$stmt->execute(array(
 
 						'zname' 	=> $name,
+						'zprice' 	=> $price,
 						'zcountry' 	=> $country,
 						'zcat'		=> $cat,
 						'zmember'	=> $member,
@@ -333,8 +353,7 @@
 						<input type="hidden" name="itemid" value="<?php echo $itemid ?>" />
 						<!-- Start Name Field -->
 						<div class="form-group form-group-lg width">
-							<label class="col-sm-1 control-label">أسم</label>
-							<div class="col-sm-10 col-md-6">
+							<div class="col-sm-6 col-md-6">
 								<input 
 									type="text" 
 									name="name" 
@@ -343,25 +362,39 @@
 									placeholder="أسم المنتج"
 									value="<?php echo $item['Name'] ?>" />
 							</div>
+							<label class="col-sm-1 control-label">أسم</label>
 						</div>
 						<!-- End Name Field -->
+						<!-- Start Price Field -->
+					<div class="form-group form-group-lg width">
+								<div class="col-sm-6 col-md-6">
+									<input 
+										type="text" 
+										name="price" 
+										class="form-control live" 
+										placeholder="سعر المنتج" 
+										data-class=".live-price" 
+										required />
+								</div>
+								<label class="col-sm-1 control-label">السعر</label>
+							</div>
+							<!-- End Price Field -->
 						<!-- Start Country Field -->
 						<div class="form-group form-group-lg width">
-							<label class="col-sm-1 control-label">البلد</label>
 							<div class="col-sm-10 col-md-6">
 								<input 
-									type="text" 
-									name="country" 
-									class="form-control" 
-									required="required" 
-									placeholder="بلد المنتج"
-									value="<?php echo $item['Country_Made'] ?>" />
+								type="text" 
+								name="country" 
+								class="form-control" 
+								required="required" 
+								placeholder="بلد المنتج"
+								value="<?php echo $item['Country_Made'] ?>" />
 							</div>
+							<label class="col-sm-1 control-label">البلد</label>
 						</div>
 						<!-- End Country Field -->
 						<!-- Start Members Field -->
 						<div class="form-group form-group-lg width">
-							<label class="col-sm-1 control-label">عضو</label>
 							<div class="col-sm-10 col-md-6">
 								<select name="member">
 									<?php
@@ -378,7 +411,6 @@
 						<!-- End Members Field -->
 						<!-- Start Categories Field -->
 						<div class="form-group form-group-lg width">
-							<label class="col-sm-1 control-label">القسم</label>
 							<div class="col-sm-10 col-md-6">
 								<select name="category">
 									<?php
@@ -397,25 +429,26 @@
 									?>
 								</select>
 							</div>
+							<label class="col-sm-1 control-label">القسم</label>
 						</div>
 						<!-- End Categories Field -->
 						<!-- Start Tags Field -->
 						<div class="form-group form-group-lg width">
-							<label class="col-sm-1 control-label">تاج</label>
 							<div class="col-sm-10 col-md-6">
 								<input 
 									type="text" 
 									name="tags" 
 									class="form-control" 
-									placeholder="(,)أستخدم الفاصلة لفصل التاجات"" 
+									placeholder="(,)أستخدم الفاصلة لفصل التاجات" 
 									value="<?php echo $item['tags'] ?>" />
 							</div>
+							<label class="col-sm-1 control-label">تاج</label>
 						</div>
 						<!-- End Tags Field -->
 						<!-- Start Submit Field -->
 						<div class="form-group form-group-lg width">
-							<div class="col-sm-offset-2 col-sm-10">
-								<input type="submit" value="Save Item" class="btn btn-primary btn-sm" />
+							<div class="col-sm-offset-2 col-sm-4">
+								<input type="submit" value="حفظ" class="btn btn-primary btn-sm fw-bold" />
 							</div>
 						</div>
 						<!-- End Submit Field -->
@@ -506,6 +539,7 @@
 				// Get Variables From The Form
 
 				$id 		= $_POST['itemid'];
+				$price 		= $_POST['price'];
 				$name 		= $_POST['name'];
 				$country	= $_POST['country'];
 				$cat 		= $_POST['category'];
@@ -518,6 +552,10 @@
 
 				if (empty($name)) {
 					$formErrors[] = 'الاسم مطلوب';
+				}
+
+				if (empty($name)) {
+					$formErrors[] = 'السعر مطلوب';
 				}
 
 				if (empty($country)) {
@@ -547,7 +585,8 @@
 					$stmt = $con->prepare("UPDATE 
 												items 
 											SET 
-												Name = ?, 
+												Name = ?,
+												Price = ?, 
 												Country_Made = ?,
 												Cat_ID = ?,
 												Member_ID = ?,
@@ -555,7 +594,7 @@
 											WHERE 
 												Item_ID = ?");
 
-					$stmt->execute(array($name, $country, $cat, $member, $tags, $id));
+					$stmt->execute(array($name, $price,$country, $cat, $member, $tags, $id));
 
 					// Echo Success Message
 

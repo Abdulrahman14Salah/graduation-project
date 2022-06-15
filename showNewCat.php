@@ -1,6 +1,7 @@
 <?php 
 	session_start();
 	include 'init.php';
+	$pageTitle = 'أحدث المنتجات';
     $allItems = getAllFrom('*', 'items', 'where Approve = 1', '', 'Item_ID');
 ?>
 <div class="container">

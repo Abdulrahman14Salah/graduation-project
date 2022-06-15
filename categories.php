@@ -1,6 +1,7 @@
 <?php 
 	session_start();
 	include 'init.php';
+	$pagetitle = 'الأقسام';
 ?>
 
 <div class="container main-categories-section">

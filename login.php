@@ -1,7 +1,7 @@
 <?php
 	ob_start();
 	session_start();
-	$pageTitle = 'Login';
+	$pageTitle = 'تسجيل الدخول';
 	if (isset($_SESSION['user'])) {
 		header('Location: index.php');
 	}

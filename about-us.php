@@ -1,7 +1,7 @@
 <?php 
 	ob_start();
 	session_start();
-	$pageTitle = 'About Us';
+	$pageTitle = 'من نحن';
 	include 'init.php';
 ?>
 <div class="container main-about-us mt-5">

@@ -19,37 +19,37 @@
 
 			if (strlen($name) < 4) {
 
-				$formErrors[] = 'Item Title Must Be At Least 4 Characters';
+				$formErrors[] = 'أسم المنتج يجب أن يكون أكثر من 4 أحرف';
 
 			}
 
 			if (strlen($desc) < 10) {
 
-				$formErrors[] = 'Item Description Must Be At Least 10 Characters';
+				$formErrors[] = 'وصف المنتج يجب أن يكون أكثر من 10 أحرف';
 
 			}
 
 			if (strlen($country) < 2) {
 
-				$formErrors[] = 'Item Title Must Be At Least 2 Characters';
+				$formErrors[] = 'أسم الدولة يجب أن يكون أكثر من 2 أحرف';
 
 			}
 
 			if (empty($price)) {
 
-				$formErrors[] = 'Item Price Cant Be Empty';
+				$formErrors[] = 'يجب تحديد سعر المنتج';
 
 			}
 
 			if (empty($status)) {
 
-				$formErrors[] = 'Item Status Cant Be Empty';
+				$formErrors[] = 'يجب تحديد حالة المنتج';
 
 			}
 
 			if (empty($category)) {
 
-				$formErrors[] = 'Item Category Cant Be Empty';
+				$formErrors[] = 'يجب تحديد فئة المنتج';
 
 			}
 
@@ -82,7 +82,7 @@
 
 				if ($stmt) {
 
-					$succesMsg = 'Item Has Been Added';
+					$succesMsg = 'تم إضافة المنتج بنجاح';
 					
 				}
 
