@@ -278,7 +278,7 @@
 					
 					$image = rand(0, 10000000000) . '_' . $imageName;
 
-					move_uploaded_file($imageTmp, "uploads\items\\" . $image);
+					move_uploaded_file($imageTmp, "uploads/items/" . $image);
 
 
 					// Insert Userinfo In Database
