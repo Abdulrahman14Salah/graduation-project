@@ -3,6 +3,7 @@
 	session_start();
 	include 'init.php';
 	$pagetitle = 'الأقسام';
+	$test = "test";
 ?>
 
 <div class="container main-categories-section">
